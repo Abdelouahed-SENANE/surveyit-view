@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: hsl(0, 0%, 96%); /* Main background color */
+    --background-content: hsl(0, 0%, 7%); /* Primary content color */
+  
+    --card: hsl(0, 0%, 98%); /* Background color for cards */
+    --card-content: hsl(0, 0%, 20%); 
+  
+    --popover: hsl(0, 0%, 100%); /* Background color for popovers */
+    --popover-content: hsl(0, 0%, 7%); /* content color within popovers */
+  
+    --primary:hsl(221, 83%, 53%); /* Main primary color */
+    --primary-content: hsl(0, 0%, 100%); /* content color for primary elements */
+  
+    --secondary: hsl(0, 0%, 96%); /* Secondary color */
+    --secondary-content: hsl(0, 0%, 11%); /* content color for secondary elements */
+  
+    --muted: hsl(0, 0%, 96%); /* Muted background color */
+    --muted-content: hsl(0, 0%, 46%); /* content color for muted elements */
+  
+    --accent: hsl(0, 0%, 96%); /* Accent color */
+    --accent-content: hsl(0, 0%, 11%); /* content color for accent elements */
+  
+    --destructive: hsl(0, 0%, 60%); /* Color for destructive actions */
+    --destructive-content: hsl(0, 0%, 100%); /* content color for destructive actions */
+  
+    --border: hsl(0, 0%, 90%); /* Border color */
+    --input: hsl(0, 0%, 90%); /* Input background color */
+    --ring: hsl(0, 0%, 20%); /* Focus ring color */
+}
+
+:root {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}

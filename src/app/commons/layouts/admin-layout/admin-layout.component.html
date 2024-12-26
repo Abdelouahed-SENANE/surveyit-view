@@ -1,0 +1,16 @@
+<div class="panel__wrapper bg-background ">
+    <div class="panel__container h-screen p-4 w-full flex gap-5 justify-start">
+        <aside class="panel__sidebar">
+            <panel-sidebar/>
+        </aside>
+            <section class="main__panel flex-1 bg-green-200">  
+                <header class="panel__head">
+                    <panel-header/>
+                </header>
+                <div>     
+                     <router-outlet/>
+                </div>
+            </section>
+    </div>
+
+</div>
