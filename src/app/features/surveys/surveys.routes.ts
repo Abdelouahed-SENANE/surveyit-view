@@ -9,9 +9,9 @@ const routes : Routes = [
         path : '',
         children : [
             {
-                path: "list",
+                path: "all",
                 component : SurveyListComponent
-            }
+            },
         ]
     }
 ]

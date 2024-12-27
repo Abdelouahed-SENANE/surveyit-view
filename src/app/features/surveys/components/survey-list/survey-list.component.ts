@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, signal, Signal } from '@angular/core';
 import { Survey } from '../../../../core/models';
-import { SurveyService } from '../../services/survey.service';
+import { AppService } from '../../../../core/services/app.service';
+import { SurveyResponse } from '../../../../commons/response/api-response.module';
 
 @Component({
   selector: 'app-survey-list',
@@ -9,21 +10,33 @@ import { SurveyService } from '../../services/survey.service';
   styleUrl: './survey-list.component.css'
 })
 export class SurveyListComponent implements OnInit{
-  private service : SurveyService
-   surveys : Survey[] = []
-  constructor(service : SurveyService) {
-    this.service = service
-  }
+  surveys = signal<Survey[]>([]); // Initialize the signal for surveys
+  errorMessage: string = ''; 
+  constructor(private service: AppService) {} // Use dependency injection for AppService
+
+
   ngOnInit(): void {
-    this.service.getSurveys().subscribe({
-      next: (data) => {
-        this.surveys = data
-        console.log(data)
+
+    this.loadSurveys(); 
+
+  }
+  loadSurveys(): void {
+
+    this.service.getSurveys().subscribe(
+
+      (res: SurveyResponse) => {
+
+        this.surveys.set(res.data.surveys); 
+
       },
-      error : (error) =>{
-        console.error("Error Fetching " + error);
-        
+
+      (error) => {
+
+        this.errorMessage = error; // Handle the error
+
       }
-    })
+
+    );
+
   }
 }
