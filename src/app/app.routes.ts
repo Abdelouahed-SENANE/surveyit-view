@@ -8,15 +8,19 @@ export const routes: Routes = [
         component : AdminLayoutComponent,
         children : [
             {
-                path : "survey",
+                path : "surveys",
                 loadChildren : () => import('./features/surveys/surveys.module').then(m => m.SurveysModule)
             }
+            // {
+            //     path : "owners",
+            //     loadChildren : () => import('./features/owners/owner-list/').then(m => m.EditionsModule)
+            // }
         ]
-    }
+    },
 ];
 
 @NgModule({
-    imports : [RouterModule.forChild(routes)],
+    imports : [RouterModule.forRoot(routes)],
     exports : [RouterModule]
 })
 export class AppRoutingModule {}

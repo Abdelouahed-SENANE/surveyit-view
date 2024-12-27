@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily : {
+        'IBM-Plex' : ["Poppins" , "sans-serif"]
+      },
       colors : {
         background : {
           DEFAULT : "var(--background)",

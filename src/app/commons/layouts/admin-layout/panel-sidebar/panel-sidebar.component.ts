@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { LogoComponent } from "../../../components/logo/logo.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'panel-sidebar',
-  imports: [LogoComponent],
+  imports: [RouterModule , LogoComponent],
   templateUrl: './panel-sidebar.component.html'
 })
-export class SidebarComponent {
-
-}
+export class SidebarComponent {}

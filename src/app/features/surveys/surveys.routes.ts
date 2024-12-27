@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import {  RouterModule, Routes } from "@angular/router";
-import { SurveyListComponent } from "./survey-list/survey-list.component";
+import { SurveyListComponent } from "./components/survey-list/survey-list.component";
 
 
 

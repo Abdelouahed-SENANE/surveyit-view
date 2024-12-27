@@ -2,7 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 :root {
     --background: hsl(0, 0%, 96%); /* Main background color */
     --background-content: hsl(0, 0%, 7%); /* Primary content color */
@@ -13,8 +13,8 @@
     --popover: hsl(0, 0%, 100%); /* Background color for popovers */
     --popover-content: hsl(0, 0%, 7%); /* content color within popovers */
   
-    --primary:hsl(221, 83%, 53%); /* Main primary color */
-    --primary-content: hsl(0, 0%, 100%); /* content color for primary elements */
+    --primary:#16423C; /* Main primary color */
+    --primary-content: #fff; /* content color for primary elements */
   
     --secondary: hsl(0, 0%, 96%); /* Secondary color */
     --secondary-content: hsl(0, 0%, 11%); /* content color for secondary elements */
@@ -37,6 +37,11 @@
     padding: 0;
     margin: 0;
     font-size: 14px;
+}
+
+* {
+    font-family: 'IBM Plex Mono', monospace;
+
 }
 
 a {
