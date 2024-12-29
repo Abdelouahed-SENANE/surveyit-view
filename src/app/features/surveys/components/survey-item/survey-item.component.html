@@ -11,9 +11,15 @@
             <span class="bg-green-400 w-fit py-1 px-2 rounded-md uppercase text-[13px] mt-2 text-blue-50">editions</span>
             <div class="wrapper_editions flex flex-wrap gap-1 py-2 text-sm">
                 @for (edition of survey.editions; track edition.id) {
-                    <a routerLink="/editions/{{edition.id}}/" class="bg-primary text-primary-content rounded-lg px-2 py-1">{{edition.year}}</a>
+                    <a routerLink="/admin/editions/{{edition.id}}" class="bg-primary text-primary-content rounded-lg px-2 py-1">{{edition.year}}</a>
                 }
             </div>
+        </div>
+        <div class="flex items-center gap-2 border-t mt-2 py-2">
+            <div class="w-8 h-8 rounded-full text-lg flex items-center justify-center text-white bg-slate-800">
+                {{ survey.owner.name.slice(0, 1).toUpperCase() }}
+            </div>
+            <span class="  rounded-md text-[13px]  text-background-content">{{ survey.owner.name}}</span>
         </div>
     </div>
 </div>

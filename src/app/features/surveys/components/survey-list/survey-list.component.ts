@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, signal, Signal } from '@angular/core';
 import { Survey } from '../../../../core/models';
 import { AppService } from '../../../../core/services/app.service';
-import { SurveyResponse } from '../../../../commons/response/api-response.module';
 
 @Component({
   selector: 'app-survey-list',
@@ -10,31 +9,25 @@ import { SurveyResponse } from '../../../../commons/response/api-response.module
   styleUrl: './survey-list.component.css'
 })
 export class SurveyListComponent implements OnInit{
-  surveys = signal<Survey[]>([]); // Initialize the signal for surveys
+  surveys = signal<Survey[]>([]);
   errorMessage: string = ''; 
-  constructor(private service: AppService) {} // Use dependency injection for AppService
 
+  constructor(private service: AppService) {}
 
   ngOnInit(): void {
-
     this.loadSurveys(); 
-
   }
+
   loadSurveys(): void {
-
-    this.service.getSurveys().subscribe(
-
-      (res: SurveyResponse) => {
-
-        this.surveys.set(res.data.surveys); 
-
+    this.service.getSurveys().subscribe({
+      next : (res) => {
+        this.surveys.set(res.data.surveys)
       },
-
-      (error) => {
-
-        this.errorMessage = error; // Handle the error
-
+      error: (err) => {
+        console.error(err)
       }
+    }
+      
 
     );
 

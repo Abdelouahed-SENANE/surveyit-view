@@ -10,11 +10,11 @@ export const routes: Routes = [
             {
                 path : "surveys",
                 loadChildren : () => import('./features/surveys/surveys.module').then(m => m.SurveysModule)
+            },
+            {
+                path : "editions",
+                loadChildren : () => import('./features/editions/editions.module').then(m => m.EditionsModule)
             }
-            // {
-            //     path : "owners",
-            //     loadChildren : () => import('./features/owners/owner-list/').then(m => m.EditionsModule)
-            // }
         ]
     },
 ];

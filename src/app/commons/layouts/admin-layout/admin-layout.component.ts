@@ -12,13 +12,10 @@ import { SidebarComponent } from "./panel-sidebar/panel-sidebar.component";
 )
 
 export class AdminLayoutComponent implements OnInit {
-    @Input() title: string = 'Title';
 
     constructor() {}
 
-    updateTitle(newTitle : string) {
-        this.title = newTitle
-    }
+
 
     ngOnInit(): void {
         
