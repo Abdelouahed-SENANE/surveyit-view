@@ -10,8 +10,7 @@ import { AppService } from '../../../../core/services/app.service';
 })
 export class SurveyListComponent implements OnInit{
   surveys = signal<Survey[]>([]);
-  errorMessage: string = ''; 
-
+  isActive : boolean = false
   constructor(private service: AppService) {}
 
   ngOnInit(): void {
@@ -27,9 +26,12 @@ export class SurveyListComponent implements OnInit{
         console.error(err)
       }
     }
-      
-
+    
     );
 
+  }
+
+  onIsActiveChange(newState : boolean) : void {
+    this.isActive = newState
   }
 }

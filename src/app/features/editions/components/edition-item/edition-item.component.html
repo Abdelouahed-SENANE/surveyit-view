@@ -83,10 +83,10 @@
               <!-- <input type="text" [(ngModel)]="newQuestion.subchapterId" [value]="currentSubchapter.id" > -->
             </td>
             <td class="pl-6 p-4 text-md">
-              <input type="text" [(ngModel)]="newQuestion.text" placeholder="Enter question." id="" name="text" class="outline-none w-full">
+              <input type="text" required [(ngModel)]="newQuestion.text" placeholder="Enter question." id="" name="text" class="outline-none w-full">
             </td>
             <td class="pl-6 p-4 text-md">
-              <select   [(ngModel)]="newQuestion.type" class="bg-transparent w-full">
+              <select  required [(ngModel)]="newQuestion.type" class="bg-transparent w-full">
                 <option selected value="SINGLE_CHOICE">Single</option>
                 <option value="MULTI_CHOICE">Multiple</option>
               </select>

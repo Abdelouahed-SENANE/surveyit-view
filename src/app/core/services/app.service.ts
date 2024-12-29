@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EditionResponse, QuestionResponse, SurveyListResponse } from '../../commons/response/api-response.module';
+import { EditionResponse, QuestionResponse, SurveyListResponse, SurveyResponse } from '../../shared/response/api-response.module';
 import { env } from '../../../env/env';
 import { Question } from '../models';
-import { QuestionCreateDTO } from '../../commons/response/api-request.module';
+import { QuestionCreateDTO, SurveyCreateDTO } from '../../shared/response/api-request.module';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,12 @@ export class AppService  {
 
   deleteQuestion(questionId : string) : Observable<QuestionResponse> {
     return this.http.delete<QuestionResponse>(env.API_URL+"/questions/"+questionId)
+  }
+
+  addSurvey(newSurvey : SurveyCreateDTO) : Observable<SurveyResponse> {
+    return this.http.post<SurveyResponse>(env.API_URL+"/surveys" , newSurvey)
+  }
+  deleteSurvey(surveyId : string) : Observable<SurveyResponse> {
+    return this.http.delete<SurveyResponse>(env.API_URL+"/surveys/"+surveyId)
   }
 }

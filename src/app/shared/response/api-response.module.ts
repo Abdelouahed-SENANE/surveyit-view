@@ -11,6 +11,15 @@ export interface SurveyListResponse {
     }
 
   }
+  export interface SurveyResponse {
+
+    status: number;
+    message: string;
+    data: {
+      survey: Survey
+    }
+
+  }
 
   export interface EditionResponse {
     status: number;

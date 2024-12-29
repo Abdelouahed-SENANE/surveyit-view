@@ -2,8 +2,8 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../../../../core/services/app.service';
 import { Edition, Subchater } from '../../../../core/models';
-import { EditionResponse, QuestionResponse } from '../../../../commons/response/api-response.module';
-import { QuestionCreateDTO } from '../../../../commons/response/api-request.module';
+import { EditionResponse, QuestionResponse } from '../../../../shared/response/api-response.module';
+import { QuestionCreateDTO } from '../../../../shared/response/api-request.module';
 
 @Component({
   selector: 'app-edition-item',
