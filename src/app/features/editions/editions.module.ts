@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EditionsRoutingModule } from './editions.routes';
 import { EditionItemComponent } from './components/edition-item/edition-item.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { EditionItemComponent } from './components/edition-item/edition-item.com
   imports: [
     CommonModule,
     EditionsRoutingModule,
+    FormsModule
   
 ]
 })

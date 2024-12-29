@@ -32,9 +32,10 @@ export interface Subchater {
     title : string
     questions : Question[]
 }
-export interface Question {
+export interface Question{
     id : string 
     text : string
     type : string
-    answrCount : number
+    answerCount : number
+    subchapter : Subchater
 }
