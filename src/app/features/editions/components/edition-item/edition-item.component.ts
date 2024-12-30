@@ -1,9 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../../../../core/services/app.service';
-import { Edition, Subchater } from '../../../../core/models';
+import { Edition, Question, Subchater } from '../../../../core/models';
 import { EditionResponse, QuestionResponse } from '../../../../shared/response/api-response.module';
-import { QuestionCreateDTO } from '../../../../shared/response/api-request.module';
 
 @Component({
   selector: 'app-edition-item',
@@ -13,8 +12,10 @@ import { QuestionCreateDTO } from '../../../../shared/response/api-request.modul
 })
 export class EditionItemComponent implements OnInit {
   edition!: Edition
+  isActive : boolean = false
   currentSubchapter! : Subchater | undefined
-  newQuestion : QuestionCreateDTO = {text : '' , type : 'SINGLE_CHOICE', subchapterId  : this.currentSubchapter?.id}
+  currentQuestion! : Question | undefined 
+  isQuestions : boolean = true
 
   constructor(private route : ActivatedRoute , private service : AppService){}
 
@@ -22,12 +23,14 @@ export class EditionItemComponent implements OnInit {
     this.loadEdition()
   }
 
+
+
   loadEdition() : void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id')
       if (id) {
         this.service.getEdition(id).subscribe({
-          next : (res : EditionResponse) =>{
+          next : (res : EditionResponse) =>{            
             this.edition= res.data.edition            
           },
           error : (err) => {
@@ -38,44 +41,24 @@ export class EditionItemComponent implements OnInit {
     })
   }
 
-  
-  
-  showQuestion(id : string  ) : void{
-   
+  toggleIsQuestions() : void {    
+    this.isQuestions = !this.isQuestions
+  }
+
+  findAllQuestions(id : string  ) : void{
     this.currentSubchapter = this.edition.chapters
     .find(ch => ch.subchapters.some(sub => sub.id === id))
     ?.subchapters.find(sub => sub.id === id);
-
+  }
+  updateQuestion(update : Question) : void {
+    console.log(update);
+  
+    this.currentQuestion = update
   }
 
-  addQuestion() : void {
-    this.newQuestion.subchapterId = this.currentSubchapter?.id
-    if (this.newQuestion.subchapterId) {
-      this.service.addQuestion(this.newQuestion).subscribe({
-        next : (res : QuestionResponse) => {
-          this.newQuestion = {text : '' , type : 'SINGLE_CHOICE', subchapterId  : this.currentSubchapter?.id}
-        },
-        error : (err) => {
-          console.log(err)
-        }
-      })
-    }
+  onChangeIsActive(newState : boolean) : void {
+      this.isActive = newState
   }
-
-  deleteQuestion(id : string) : void {
-    const confirm = window.confirm("Are you sure to delete this question?");
-    if (confirm) {
-      this.service.deleteQuestion(id).subscribe({
-        next: (res ) => {
-          console.log(res);
-        },
-        error : (err) => {
-          console.error(err)
-        }
-      })
-    }
-  }
-
   
 
 }

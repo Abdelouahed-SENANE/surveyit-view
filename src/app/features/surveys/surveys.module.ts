@@ -5,21 +5,19 @@ import { SurveyRoutingModule } from "./surveys.routes";
 import { SurveyItemComponent } from "./components/survey-item/survey-item.component";
 import { SurveyFormComponent } from "./components/survey-form/survey-form.component";
 import { FormsModule } from "@angular/forms";
-import { UpdateSurveyComponent } from "./components/update-survey/update-survey.component";
 
 
 @NgModule({
     declarations : [
         SurveyListComponent,
-        SurveyFormComponent,
-        UpdateSurveyComponent
+        SurveyItemComponent,
+        SurveyFormComponent, 
     ],
     imports: [
     CommonModule,
     SurveyRoutingModule,
     FormsModule,
-    SurveyItemComponent,
-    
+
 ]
 })
 export class SurveysModule {

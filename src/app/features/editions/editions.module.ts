@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { EditionsRoutingModule } from './editions.routes';
 import { EditionItemComponent } from './components/edition-item/edition-item.component';
 import { FormsModule } from '@angular/forms';
+import { QuestionsTableComponent } from "../questions/components/questions-table/questions-table.component";
+import { AnswerTableComponent } from '../answers/components/answer-table/answer-table.component';
 
 
 @NgModule({
@@ -13,8 +15,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     EditionsRoutingModule,
-    FormsModule
-  
+    FormsModule,
+    QuestionsTableComponent,
+    AnswerTableComponent
 ]
 })
 export class EditionsModule { }

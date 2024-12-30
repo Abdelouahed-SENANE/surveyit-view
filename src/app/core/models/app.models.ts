@@ -38,4 +38,12 @@ export interface Question{
     type : string
     answerCount : number
     subchapter : Subchater
+    answers : Answer[]
+}
+
+export interface Answer {
+    id : string,
+    text : string,
+    selectionCount : number
+    question : Question
 }

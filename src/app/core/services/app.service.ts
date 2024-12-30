@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EditionResponse, QuestionResponse, SurveyListResponse, SurveyResponse } from '../../shared/response/api-response.module';
+import { AnswerResponse, EditionResponse, QuestionResponse, SurveyListResponse, SurveyResponse } from '../../shared/response/api-response.module';
 import { env } from '../../../env/env';
 import { Question } from '../models';
-import { QuestionCreateDTO, SurveyCreateDTO } from '../../shared/response/api-request.module';
+import { AnswerRequestDTO, QuestionCreateDTO, SurveyRequestDTO } from '../../shared/response/api-request.module';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +27,24 @@ export class AppService  {
     return this.http.post<QuestionResponse>(env.API_URL+"/subchapters/"+newQuestion.subchapterId+"/questions" , newQuestion)
   }
 
+  addAnswer(newAnswer : AnswerRequestDTO) : Observable<AnswerResponse> {
+    return this.http.post<AnswerResponse>(env.API_URL+"/answers" , newAnswer)
+  }
+
   deleteQuestion(questionId : string) : Observable<QuestionResponse> {
     return this.http.delete<QuestionResponse>(env.API_URL+"/questions/"+questionId)
   }
 
-  addSurvey(newSurvey : SurveyCreateDTO) : Observable<SurveyResponse> {
+  addSurvey(newSurvey : SurveyRequestDTO) : Observable<SurveyResponse> {
     return this.http.post<SurveyResponse>(env.API_URL+"/surveys" , newSurvey)
   }
+  editSurvey(updateSurevy : SurveyRequestDTO) : Observable<SurveyResponse> {    
+    console.log("From Service" + updateSurevy.ownerId);
+    
+    return this.http.put<SurveyResponse>(env.API_URL+"/surveys/"+updateSurevy.id , updateSurevy)
+  }
   deleteSurvey(surveyId : string) : Observable<SurveyResponse> {
+
     return this.http.delete<SurveyResponse>(env.API_URL+"/surveys/"+surveyId)
   }
 }

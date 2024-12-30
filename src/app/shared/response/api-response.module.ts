@@ -1,4 +1,4 @@
-import { Survey  , Edition, Question} from "../../core/models";
+import { Survey  , Edition, Question, Answer} from "../../core/models";
 
 
 
@@ -34,5 +34,20 @@ export interface SurveyListResponse {
     message: string;
     data: {
       question : Question 
+    }
+  }
+  export interface AnswerListRespons {
+    status: number;
+    message: string;
+    data: {
+      answers : Answer[] 
+    }
+  }
+
+  export interface AnswerResponse {
+    status: number;
+    message: string;
+    data: {
+      answer : Answer
     }
   }
