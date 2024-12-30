@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Question } from '../../../../core/models';
 import { AnswerRequestDTO } from '../../../../shared/response/api-request.module';
@@ -13,6 +13,8 @@ import { AnswerResponse } from '../../../../shared/response/api-response.module'
 })
 export class AnswerTableComponent implements OnInit{
   @Input() question! : Question | undefined
+  @Output() onChangeIsQuestion = new EventEmitter<void>();
+  
   newAnswer : AnswerRequestDTO = {id : '' , text : '' , selectionCount : 0, questionId  : this.question?.id}
 
   constructor( private service : AppService){
@@ -22,11 +24,16 @@ export class AnswerTableComponent implements OnInit{
     console.log(this.question);
   }
 
+  viewQuestions() : void {
+    this.onChangeIsQuestion.emit()
+  }
+
   deleteAnswer(id : string) : void {
-    const confirm = window.confirm("Are you sure to delete this question?");
+    const confirm = window.confirm("Are you sure to delete this answer?");
     if (confirm) {
-      this.service.deleteQuestion(id).subscribe({
+      this.service.deleteAnswer(id).subscribe({
         next: (res ) => {
+          this.eraseItem(id)
           console.log(res);
         },
         error : (err) => {
@@ -37,7 +44,6 @@ export class AnswerTableComponent implements OnInit{
   }
   addAnswer() : void {
     this.newAnswer.questionId = this.question?.id
-    console.log("before insert.." + this.newAnswer.text);
     
     if (this.newAnswer.questionId) {
       this.service.addAnswer(this.newAnswer).subscribe({
@@ -49,6 +55,16 @@ export class AnswerTableComponent implements OnInit{
           console.log(err)
         }
       })
+    }
+  }
+  eraseItem(id : string) {
+    if (this.question?.answers) {
+      const index = this.question?.answers.findIndex(answer => answer.id === id)
+      if (index !== -1) {
+         this.question?.answers.splice(index , 1)
+      }else {
+       console.error("Error delete from array.");
+      }
     }
   }
 

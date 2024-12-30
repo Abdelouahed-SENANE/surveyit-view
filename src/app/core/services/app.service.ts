@@ -31,6 +31,9 @@ export class AppService  {
     return this.http.post<AnswerResponse>(env.API_URL+"/answers" , newAnswer)
   }
 
+  deleteAnswer(answerId : string) : Observable<AnswerResponse> {
+    return this.http.delete<AnswerResponse>(env.API_URL+"/answers/"+answerId)
+  }
   deleteQuestion(questionId : string) : Observable<QuestionResponse> {
     return this.http.delete<QuestionResponse>(env.API_URL+"/questions/"+questionId)
   }

@@ -50,9 +50,7 @@ export class EditionItemComponent implements OnInit {
     .find(ch => ch.subchapters.some(sub => sub.id === id))
     ?.subchapters.find(sub => sub.id === id);
   }
-  updateQuestion(update : Question) : void {
-    console.log(update);
-  
+  updateQuestion(update : Question) : void {  
     this.currentQuestion = update
   }
 

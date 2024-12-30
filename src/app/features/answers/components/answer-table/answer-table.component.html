@@ -1,5 +1,13 @@
 <div class="w-full my-4">
-        <h3 class="text-3xl mb-6  font-medium text-primary">{{question?.text }}</h3>
+        <button (click)="viewQuestions()" class="text-primary-content rounded-full items-center py-2 px-3 flex bg-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+                        <path d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753"/>
+                      </svg>
+                      <span class="px-1">Back</span>
+        </button>
+        <div class="flex items-center my-6  gap-6">
+                <h3 class="text-3xl  font-medium text-primary">{{question?.text }}</h3>
+        </div>
         <div>
           <table class="rounded-lg border-collapse bg-white shadow-[0px_0px_6px_6px_rgba(0,_0,_0,_0.1)] shadow-gray-100 w-full p-4   overflow-hidden">
             <thead class="bg-primary text-white">
@@ -24,7 +32,7 @@
                       <td class="pl-6 p-4 text-md">{{question.id}}</td>
                       <td class="pl-6 p-4 text-md">{{answer.selectionCount}}</td>
                       <td class="pl-6 p-4 text-md flex gap-1">
-                        <button (click)="deleteAnswer(question.id)" class="bg-rose-500 px-4 py-1.5 rounded-lg flex gap-1 items-center text-white">
+                        <button (click)="deleteAnswer(answer.id)" class="bg-rose-500 px-4 py-1.5 rounded-lg flex gap-1 items-center text-white">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
                           </svg>

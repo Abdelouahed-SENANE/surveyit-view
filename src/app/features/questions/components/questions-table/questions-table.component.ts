@@ -22,14 +22,14 @@ export class QuestionsTableComponent {
   findQuestion(id: string): Question | undefined {
     return this.subchapter?.questions.find(question => question.id === id);;  
   }
-
-
+  
   deleteQuestion(id : string) : void {
     const confirm = window.confirm("Are you sure to delete this question?");
     if (confirm) {
       this.service.deleteQuestion(id).subscribe({
         next: (res ) => {
           console.log(res);
+          this.eraseItem(id)
         },
         error : (err) => {
           console.error(err)
@@ -61,6 +61,16 @@ export class QuestionsTableComponent {
   }
   resetForm() : void {
     this.newQuestion = {text : '' , type : 'SINGLE_CHOICE', subchapterId  : this.subchapter?.id}
-
   }
+  eraseItem(id : string) {
+    if (this.subchapter?.questions) {
+      const index = this.subchapter?.questions.findIndex(question => question.id === id)
+      if (index !== -1) {
+         this.subchapter?.questions.splice(index , 1)
+      }else {
+       console.error("Error delete from array.");
+      }
+    }
+  }
+
 }

@@ -36,7 +36,7 @@
       </div>
       <app-questions-table (questionChange)="updateQuestion($event)" (onChangeIsQuestion)="toggleIsQuestions()" [subchapter]="currentSubchapter"/>
     }@else {
-      <app-answer-table [question]="currentQuestion"></app-answer-table>
+      <app-answer-table (onChangeIsQuestion)="toggleIsQuestions()" [question]="currentQuestion"></app-answer-table>
     }
 
 </main>
