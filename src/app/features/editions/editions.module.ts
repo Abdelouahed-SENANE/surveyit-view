@@ -6,6 +6,7 @@ import { EditionItemComponent } from './components/edition-item/edition-item.com
 import { FormsModule } from '@angular/forms';
 import { QuestionsTableComponent } from "../questions/components/questions-table/questions-table.component";
 import { AnswerTableComponent } from '../answers/components/answer-table/answer-table.component';
+import { ChapterNodeComponent } from '../chapters/components/chapter-tree/chapter-tree.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AnswerTableComponent } from '../answers/components/answer-table/answer-
     EditionsRoutingModule,
     FormsModule,
     QuestionsTableComponent,
-    AnswerTableComponent
+    AnswerTableComponent,
+    ChapterNodeComponent
 ]
 })
 export class EditionsModule { }

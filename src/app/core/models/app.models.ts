@@ -25,19 +25,17 @@ export interface Edition {
 export interface Chapter {
     id : string
     title : string
-    subchapters : Subchater[]
-}
-export interface Subchater {
-    id : string
-    title : string
+    subchapters : Chapter[]
     questions : Question[]
+
 }
+
 export interface Question{
     id : string 
     text : string
     type : string
     answerCount : number
-    subchapter : Subchater
+    subchapter : Chapter
     answers : Answer[]
 }
 

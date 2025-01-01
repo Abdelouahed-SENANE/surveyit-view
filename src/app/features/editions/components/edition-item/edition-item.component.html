@@ -1,40 +1,15 @@
 
 
-<main class="flex">
+<main class="flex gap-5">
     @if (isQuestions) {
-      <div class=" min-w-[240px]  pr-4">
-        <h3 class="my-4 text-2xl font-medium">{{edition.survey.title}} Survey</h3>
-        <ul class="tree">
+      <div class=" min-w-[270px] my-4  rounded-lg shadow-[0px_0px_6px_6px_rgba(0,_0,_0,_0.1)] shadow-gray-100 p-4">
+        <h3 class="mb-4 text-2xl font-medium">{{edition.survey.title}} Survey</h3>
             @for (chapter of edition.chapters; track chapter.id ) {
                 <!-- Chapters Sections  -->
-                <li>
-                    <details open>
-                      <summary >{{ chapter.title}}</summary>
-                      <ul>
-                        @for (sub of chapter.subchapters; track sub.id) {
-                            <li>
-                                <details>
-                                  <summary >{{sub.title}}</summary>
-                                  <ul>
-                                    @if (sub.questions.length > 0) {
-                                        <li>
-                                            <button (click)="findAllQuestions(sub.id)" class="py-1 rounded-lg px-2 bg-primary text-primary-content">
-                                                 View Questions
-                                            </button>
-                                        </li>
-                                    }
-                                  </ul>
-                                </details>
-                            </li>
-                        }
-                      </ul>
-                    </details>
-                  </li>
+                <app-chapter-tree [chapter]="chapter" (findQuestions)="handleFindQuestions($event)"></app-chapter-tree>
             }
-            
-           </ul>
       </div>
-      <app-questions-table (questionChange)="updateQuestion($event)" (onChangeIsQuestion)="toggleIsQuestions()" [subchapter]="currentSubchapter"/>
+      <app-questions-table (questionChange)="updateQuestion($event)" (onChangeIsQuestion)="toggleIsQuestions()" [subchapter]="currentChapter"/>
     }@else {
       <app-answer-table (onChangeIsQuestion)="toggleIsQuestions()" [question]="currentQuestion"></app-answer-table>
     }

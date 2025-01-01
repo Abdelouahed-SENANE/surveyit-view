@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppService } from '../../../../core/services/app.service';
 import { QuestionCreateDTO } from '../../../../shared/response/api-request.module';
-import { Question, Subchater } from '../../../../core/models';
+import { Chapter, Question } from '../../../../core/models';
 import { QuestionResponse } from '../../../../shared/response/api-response.module';
 
 @Component({
@@ -12,7 +12,7 @@ import { QuestionResponse } from '../../../../shared/response/api-response.modul
   styleUrl: './questions-table.component.css'
 })
 export class QuestionsTableComponent {
-  @Input() subchapter! : Subchater | undefined
+  @Input() subchapter! : Chapter | undefined
   @Output() onChangeIsQuestion = new EventEmitter<void>();
   @Output() questionChange = new EventEmitter<Question>()
   newQuestion : QuestionCreateDTO = {text : '' , type : 'SINGLE_CHOICE', subchapterId  : this.subchapter?.id}
@@ -38,10 +38,11 @@ export class QuestionsTableComponent {
     }
   }
   addQuestion() : void {
-    this.newQuestion.subchapterId = this.subchapter?.id
+    this.newQuestion.subchapterId = this.subchapter?.id    
     if (this.newQuestion.subchapterId) {
       this.service.addQuestion(this.newQuestion).subscribe({
         next : (res : QuestionResponse) => {
+        
           this.subchapter?.questions.push(res.data.question)
           this.resetForm()
         },
@@ -51,6 +52,7 @@ export class QuestionsTableComponent {
       })
     }
   }
+
 
   viewsAnswers(id : string) {
     this.onChangeIsQuestion.emit()
