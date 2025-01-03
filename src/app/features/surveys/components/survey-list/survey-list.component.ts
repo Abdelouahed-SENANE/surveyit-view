@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output, signal, Signal } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, signal, Signal } from '@angular/core';
 import { Survey } from '../../../../core/models';
-import { AppService } from '../../../../core/services/app.service';
 import { SurveyRequestDTO } from '../../../../shared/response/api-request.module';
+import { SurveyService } from '../../services/surveys.service';
 
 @Component({
   selector: 'app-survey-list',
@@ -10,10 +10,10 @@ import { SurveyRequestDTO } from '../../../../shared/response/api-request.module
   styleUrl: './survey-list.component.css'
 })
 export class SurveyListComponent implements OnInit{
-  surveys = signal<Survey[]>([]);
+  @Input() surveys : Survey[] | undefined;
   isActive : boolean = false
-  // newSurvey : SurveyRequestDTO = {title : '' , description : '' , ownerId : '1'}
-  constructor(private service: AppService) {}
+  newSurvey : SurveyRequestDTO = {id: '' , title : '' , description : '' , ownerId : '1'}
+  constructor(private service: SurveyService) {}
 
   ngOnInit(): void {
     this.loadSurveys(); 
@@ -22,7 +22,7 @@ export class SurveyListComponent implements OnInit{
   loadSurveys(): void {
     this.service.getSurveys().subscribe({
       next : (res) => {
-        this.surveys.set(res.data.surveys)
+        this.surveys = res.data.surveys
       },
       error: (err) => {
         console.error(err)
@@ -34,10 +34,11 @@ export class SurveyListComponent implements OnInit{
   }
 
   addSurvey(newSurevy : SurveyRequestDTO) : void {
+    console.log(newSurevy.description , newSurevy.ownerId);
+    
     this.service.addSurvey(newSurevy).subscribe({
       next : (res) => {
-        console.log(res.data.survey);
-        window.location.href = '/admin/surveys/all'
+        this.surveys?.push(res.data.survey)
       },
       error : (err) => {
         console.error(err)

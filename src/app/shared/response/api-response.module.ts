@@ -1,4 +1,4 @@
-import { Survey  , Edition, Question, Answer} from "../../core/models";
+import { Survey  , Edition, Question, Answer, Chapter} from "../../core/models";
 
 
 
@@ -43,11 +43,32 @@ export interface SurveyListResponse {
       answers : Answer[] 
     }
   }
-
   export interface AnswerResponse {
     status: number;
     message: string;
     data: {
       answer : Answer
     }
+  }
+
+  export interface ChapterResponse {
+    status: number;
+    message: string;
+    data: {
+      chapter : Chapter
+    }
+  }
+
+  export interface SubchapterResponse {
+    status: number;
+    message: string;
+    data: {
+      subchapter : Chapter
+    }
+  }
+
+  export interface ErrorResponse {
+    message : string
+    status : number
+    timestamps : Date
   }

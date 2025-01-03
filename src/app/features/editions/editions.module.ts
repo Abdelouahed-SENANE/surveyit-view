@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import { EditionsRoutingModule } from './editions.routes';
 import { EditionItemComponent } from './components/edition-item/edition-item.component';
 import { FormsModule } from '@angular/forms';
-import { QuestionsTableComponent } from "../questions/components/questions-table/questions-table.component";
-import { AnswerTableComponent } from '../answers/components/answer-table/answer-table.component';
+import { QuestionsListComponent } from "../questions/components/questions-list/questions-list.component";
+import { AnswerListComponent } from '../answers/components/answer-list/answer-list.component';
 import { ChapterNodeComponent } from '../chapters/components/chapter-tree/chapter-tree.component';
+import { ChapterItemComponent } from "../chapters/components/chapter-item/chapter-item.component";
+import { ErrorComponent } from "../../shared/components/error/error.component";
 
 
 @NgModule({
@@ -17,9 +19,11 @@ import { ChapterNodeComponent } from '../chapters/components/chapter-tree/chapte
     CommonModule,
     EditionsRoutingModule,
     FormsModule,
-    QuestionsTableComponent,
-    AnswerTableComponent,
-    ChapterNodeComponent
+    QuestionsListComponent,
+    AnswerListComponent,
+    ChapterNodeComponent,
+    ChapterItemComponent,
+    ErrorComponent
 ]
 })
 export class EditionsModule { }

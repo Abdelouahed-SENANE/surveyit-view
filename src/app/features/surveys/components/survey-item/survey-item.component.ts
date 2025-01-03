@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Survey } from '../../../../core/models';
-import { RouterModule } from '@angular/router';
-import { AppService } from '../../../../core/services/app.service';
-import { SurveyFormComponent } from '../survey-form/survey-form.component';
 import { SurveyRequestDTO } from '../../../../shared/response/api-request.module';
+import { SurveyService } from '../../services/surveys.service';
 
 @Component({
   selector: 'app-survey-item',
@@ -15,7 +13,7 @@ export class SurveyItemComponent {
   @Input() survey!: Survey 
   existSurvey! : SurveyRequestDTO;
   isActive! : boolean
-  constructor(private service : AppService){}
+  constructor(private service : SurveyService){}
   
   onToggle(newState : boolean) : void {
     this.isActive = !this.isActive

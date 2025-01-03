@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AnswerResponse, EditionResponse, QuestionResponse, SurveyListResponse, SurveyResponse } from '../../shared/response/api-response.module';
+import { AnswerResponse, ChapterResponse, EditionResponse, QuestionResponse, SubchapterResponse, SurveyListResponse, SurveyResponse } from '../../shared/response/api-response.module';
 import { env } from '../../../env/env';
-import { Question } from '../models';
-import { AnswerRequestDTO, QuestionCreateDTO, SurveyRequestDTO } from '../../shared/response/api-request.module';
+import { AnswerRequestDTO, ChapterRequestDTO, QuestionCreateDTO, SurveyRequestDTO } from '../../shared/response/api-request.module';
 
 @Injectable({
   providedIn: 'root'
@@ -41,13 +40,25 @@ export class AppService  {
   addSurvey(newSurvey : SurveyRequestDTO) : Observable<SurveyResponse> {
     return this.http.post<SurveyResponse>(env.API_URL+"/surveys" , newSurvey)
   }
-  editSurvey(updateSurevy : SurveyRequestDTO) : Observable<SurveyResponse> {    
-    console.log("From Service" + updateSurevy.ownerId);
-    
+  editSurvey(updateSurevy : SurveyRequestDTO) : Observable<SurveyResponse> {        
     return this.http.put<SurveyResponse>(env.API_URL+"/surveys/"+updateSurevy.id , updateSurevy)
   }
   deleteSurvey(surveyId : string) : Observable<SurveyResponse> {
 
     return this.http.delete<SurveyResponse>(env.API_URL+"/surveys/"+surveyId)
   }
+
+  addChapter(newChapter : ChapterRequestDTO , editionId : string) : Observable<ChapterResponse> {
+    return this.http.post<ChapterResponse>(env.API_URL+"/editions/"+editionId+"/chapters", newChapter)
+  }
+
+  addSubchapter(newSuchapter : ChapterRequestDTO , chapterId : string ) : Observable<SubchapterResponse> {
+    return this.http.post<SubchapterResponse>(env.API_URL+"/chapters/"+chapterId + "/subchapters", newSuchapter)
+  }
+
+  deleteChapter(id : string) : Observable<ChapterResponse> {
+    return this.http.delete<ChapterResponse>(env.API_URL+"/chapters/"+id)
+
+  }
+
 }

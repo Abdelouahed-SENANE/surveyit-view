@@ -2,16 +2,9 @@
 
 <main class="flex gap-5">
     @if (isQuestions) {
-      <div class=" min-w-[270px] my-4  rounded-lg shadow-[0px_0px_6px_6px_rgba(0,_0,_0,_0.1)] shadow-gray-100 p-4">
-        <h3 class="mb-4 text-2xl font-medium">{{edition.survey.title}} Survey</h3>
-            @for (chapter of edition.chapters; track chapter.id ) {
-                <!-- Chapters Sections  -->
-                <app-chapter-tree [chapter]="chapter" (findQuestions)="handleFindQuestions($event)"></app-chapter-tree>
-            }
-      </div>
-      <app-questions-table (questionChange)="updateQuestion($event)" (onChangeIsQuestion)="toggleIsQuestions()" [subchapter]="currentChapter"/>
+      <app-chapter-item [edition]="edition"   (sendSuchapter)="updateSubchapter($event)"></app-chapter-item>
+      <app-questions-list (questionChange)="updateQuestion($event)" (onChangeIsQuestion)="toggleIsQuestions()" [subchapter]="subchapter"/>
     }@else {
-      <app-answer-table (onChangeIsQuestion)="toggleIsQuestions()" [question]="currentQuestion"></app-answer-table>
+      <app-answer-list (onChangeIsQuestion)="toggleIsQuestions()" [question]="currentQuestion"></app-answer-list>
     }
-
 </main>

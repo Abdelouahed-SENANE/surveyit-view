@@ -18,3 +18,6 @@ export interface AnswerRequestDTO {
         selectionCount? : number
         questionId? : string
 }
+export interface ChapterRequestDTO {
+    title? : string,
+}

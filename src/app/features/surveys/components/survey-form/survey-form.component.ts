@@ -1,9 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SurveyRequestDTO } from '../../../../shared/response/api-request.module';
-import { AppService } from '../../../../core/services/app.service';
-import { SurveyResponse } from '../../../../shared/response/api-response.module';
-import { Router } from '@angular/router';
-import { Survey } from '../../../../core/models';
+
 
 @Component({
   selector: 'app-survey-form',
