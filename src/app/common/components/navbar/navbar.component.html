@@ -2,9 +2,9 @@
       <app-logo [ngClass]="'text-2xl'"></app-logo>
     <div>
       <ul class="h-full flex items-center bg-transparent gap-4">
-            @for(navlink of navlinks; track navlink ) {
+            @for(link of navlinks; track link ) {
                   <li >
-                        <a [routerLink]="[navlink.path]" class="py-1" routerLinkActive="border-b-2 border-dashed text-emerald-600 border-emerald-600 border-black/90" >{{navlink.label}}</a>
+                        <a [routerLink]="[link.path]" class="py-1" routerLinkActive="border-b-2 border-dashed text-primary border-primary" >{{link.label}}</a>
                   </li>
             }
       </ul>
