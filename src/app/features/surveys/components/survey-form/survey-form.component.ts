@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SurveyRequestDTO } from '../../../../shared/response/api-request.module';
+import { SurveyRequestDTO } from '../../../../common/response/api-request.module';
 
 
 @Component({

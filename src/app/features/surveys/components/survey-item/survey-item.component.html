@@ -10,7 +10,7 @@
             <span class="bg-green-400 w-fit py-1 px-2 rounded-md uppercase text-[13px] mt-2 text-blue-50">editions</span>
             <div class="wrapper_editions flex flex-wrap gap-1 py-2 text-sm">
                 @for (edition of survey.editions; track edition.id) {
-                    <a routerLink="/admin/editions/{{edition.id}}" class="bg-primary text-primary-content rounded-lg px-2 py-1">{{edition.year}}</a>
+                    <a routerLink="/owner/editions/{{edition.id}}" class="bg-primary text-primary-content rounded-lg px-2 py-1">{{edition.year}}</a>
                 }
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Survey } from '../../../../core/models';
-import { SurveyRequestDTO } from '../../../../shared/response/api-request.module';
+import { SurveyRequestDTO } from '../../../../common/response/api-request.module';
 import { SurveyService } from '../../services/surveys.service';
 
 @Component({

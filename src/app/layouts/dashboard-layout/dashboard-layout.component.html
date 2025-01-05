@@ -1,0 +1,16 @@
+<div class="panel__wrapper bg-background font-poppins">
+    <div class="panel__container h-screen p-4 w-full flex gap-5 justify-start">
+        <aside class="panel__sidebar">
+            <panel-sidebar/>
+        </aside>
+            <section class="main__panel flex-1 flex flex-col gap-4 bg-transparent  overflow-hidden h-full  ">  
+                <header class="panel__head bg-white py-2 px-6 rounded-xl shadow-sm">
+                    <panel-header/>
+                </header>
+                <div class="panel__content overflow-auto bg-white py-2 px-6 flex-1 rounded-xl shadow-sm">
+                     <router-outlet/>
+                </div>
+            </section>
+    </div>
+
+</div>

@@ -1,0 +1,34 @@
+
+input{
+      appearance: none;
+}
+label.box {
+      display: flex;
+      align-items: center;
+      padding-inline: 10px;
+      padding-block: 8px;
+      border: 2.5px solid #e5e7eb;
+      gap: 8px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.5s ease;
+}
+#answer_{{answer.id}}:checked ~ label.box {
+      border-color: var(--primary);
+}
+label.box .circle {
+      width: 16px;
+      height: 16px;
+      background: #e5e7eb;
+      border: 5px solid transparent;
+      border-radius: 50%;
+      position: relative;
+      transition: ease 0.5s;
+}
+
+#answer_{{answer.id}}:checked ~ label.box .circle {
+      background: white;
+      border-color: var(--primary);
+
+}

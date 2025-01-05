@@ -8,7 +8,7 @@ import { QuestionsListComponent } from "../questions/components/questions-list/q
 import { AnswerListComponent } from '../answers/components/answer-list/answer-list.component';
 import { ChapterNodeComponent } from '../chapters/components/chapter-tree/chapter-tree.component';
 import { ChapterItemComponent } from "../chapters/components/chapter-item/chapter-item.component";
-import { ErrorComponent } from "../../shared/components/error/error.component";
+import { ErrorComponent } from "../../common/components/error/error.component";
 
 
 @NgModule({

@@ -1,0 +1,38 @@
+
+                <ul class="tree">
+                        <li class="flex">
+                                <details >
+                                        <summary  class="flex justify-between items-center">
+                                                <span>{{ chapter.title}}</span>
+                                                <div class="">
+                                                        <input type="checkbox" class="border-gray-50 checked:border-primary  checked:bg-primary"  (change)="emitFromCheckbox($event)" [value]="chapter.id">
+                                                </div>
+                                        </summary> 
+                                        <ul>
+                                        @if(chapter.subchapters && chapter.subchapters.length > 0) {
+                                                @for (sub of chapter.subchapters; track sub.id) {
+                                                        <app-chapter-tree [chapter]="sub"  [selectedId]="selectedId" (sendSubchapterId)="emitSubchapterId($event)" (change)="emitFromCheckbox($event)" (sendSubchapter)="emitSubchapter($event)"></app-chapter-tree>
+                                                }
+                
+                                        }@else {
+                                                @if (chapter.questions.length >= 0) {
+                                                        <ul>
+                                                                <li>
+                                                                <button (click)="emitSubchapter(chapter)" class="py-1 text-sm flex items-center gap-2 rounded-lg px-2 bg-primary text-primary-content">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                                              </svg>
+                                                                        <span>Questions</span>
+                                                                </button>
+                                                                </li>
+                                                        </ul>
+                                                }
+                                        }
+                                        </ul>
+                                </details>
+                                </li>
+                        
+                </ul>
+
+

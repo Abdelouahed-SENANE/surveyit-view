@@ -1,0 +1,3 @@
+<div [ngClass]="{'translate-x-0 visible opacity-1': isToast , 'translate-x-[200%] opacity-0 invisible' : !isToast}" class="w-[400px] invisible opacity-0 fixed transition-all duration-500 bottom-10 right-10  shadow-lg shadow-slate-200">
+      <app-error [errorMessage]="errorMessage"></app-error>
+</div>

@@ -13,7 +13,7 @@
     --popover: hsl(0, 0%, 100%); /* Background color for popovers */
     --popover-content: hsl(0, 0%, 7%); /* content color within popovers */
   
-    --primary:#16423C; /* Main primary color */
+    --primary:#73d699; /* Main primary color */
     --primary-content: #fff; /* content color for primary elements */
   
     --secondary: hsl(0, 0%, 96%); /* Secondary color */
