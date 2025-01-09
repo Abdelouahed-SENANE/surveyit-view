@@ -1,0 +1,21 @@
+<div class="bg-gray-50">
+  @if (isLoading) {
+    <div class="container h-screen justify-center  flex items-center w-full mx-auto">
+      <app-loader></app-loader>
+    </div>
+  }
+
+  <div class="container mx-auto my-5 py-14 ">
+    <div class="max-w-lg mx-auto text-center">
+      <h1 class="font-bold text-4xl">Surveys Results</h1>
+      <p class="text-gray-400 my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet architecto asperiores consequuntur</p>
+    </div>
+
+    <div class="flex items-center my-12 gap-4" >
+      @for (edition of editions; track edition.id) {
+        <app-result-card [edition]="edition"></app-result-card>
+      }
+    </div>
+
+  </div>
+</div>

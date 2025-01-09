@@ -1,15 +1,17 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Chapter, Edition, Question} from '../../../../core/models';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {ParticipateService} from '../../services/participates.service';
 import {NgForOf, NgIf} from '@angular/common';
 import {data} from 'autoprefixer';
 import {ignoreElements} from 'rxjs';
 import {FormsModule} from '@angular/forms';
+import {HeaderComponent} from '../../../../common/components/header/header.component';
+import {LoaderComponent} from '../../../../common/components/loader/loader.component';
 
 @Component({
   selector: 'app-participate-start',
-  imports: [NgForOf, FormsModule],
+  imports: [NgForOf, FormsModule, LoaderComponent],
   templateUrl: './participate-start.component.html',
   styleUrl: './participate-start.component.css'
 })
@@ -23,6 +25,7 @@ export class ParticipateStartComponent implements OnInit {
   questionIndex: number = 0
   isFinished: boolean = false;
   isLoading: boolean = true;
+
   multi: { questionId: string, answers: {answerId : string}[] } = {
     questionId: '',
     answers: []
@@ -32,17 +35,10 @@ export class ParticipateStartComponent implements OnInit {
     answerId: ''
   }
 
-  async ngOnInit(): Promise<void> {
+   ngOnInit(): void {
 
-    try {
-      await this.loadEdition();
-      this.loadProgress();
-      setTimeout(() => {
-        this.isLoading = false;
-      } , 3000)
-    } catch (error) {
-      console.error('Error loading edition:', error);
-    }
+      this.loadEdition();
+
 
   }
 
@@ -59,8 +55,7 @@ export class ParticipateStartComponent implements OnInit {
     }
   }
 
-  loadEdition(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
+  loadEdition(): void {
       this.route.paramMap.subscribe(params => {
         const id = params.get('id')
         if (id) {
@@ -71,18 +66,20 @@ export class ParticipateStartComponent implements OnInit {
                 this.findChapterAndHisQuestion(this.edition.chapters)
               }
               console.log(this.data)
-              resolve();
             },
             error: (err) => {
               console.error(err)
-              reject(err)
+            },
+            complete : () => {
+              this.loadProgress();
+              setTimeout(() => {
+                this.isLoading = false
+              }, 300);
             }
           })
-        } else {
-          reject("No ID found in parameters")
         }
       })
-    })
+
 
   }
 
@@ -107,15 +104,15 @@ export class ParticipateStartComponent implements OnInit {
   }
 
   submitForm(newParticipation: any) {
-    this.service.addParticipation(newParticipation ,this.edition.survey.id).subscribe({
-      next: (res) => {
-        console.log(res)
-      },
-      error: (err) => {
-        console.error(err)
-      }
-    })
-  }
+      this.service.addParticipation(newParticipation ,this.edition.survey.id).subscribe({
+        next: (res) => {
+          console.log(res)
+        },
+        error: (err) => {
+          console.error(err)
+        }
+      })
+    }
 
   private findChapterAndHisQuestion(chapters: Chapter[]) {
     for (const chapter of chapters) {
@@ -134,9 +131,13 @@ export class ParticipateStartComponent implements OnInit {
     const currentQuestion: Question = this.data[this.chapterIndex].questions[this.questionIndex]
 
     if (currentQuestion.type == "SINGLE_CHOICE") {
-      this.submitForm(this.single)
+      if (this.single.questionId && this.single.answerId) {
+        this.submitForm(this.single)
+     }
     } else {
-      this.submitForm(this.multi)
+      if (this.multi.questionId && this.multi.answers) {
+        this.submitForm(this.multi)
+      }
     }
 
     const currentChapter = this.data[this.chapterIndex];

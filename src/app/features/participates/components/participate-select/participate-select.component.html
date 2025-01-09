@@ -1,3 +1,8 @@
+<div class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-emerald-50">
+  <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white"></div>
+  <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white"></div>
+</div>
+
 <div class="flex items-center w-full justify-center">
       <div class="flex my-80 items-end gap-4">
             <app-select [editions]="editions"  (sendEditionId)="recieveEditionId($event)"></app-select>
@@ -6,10 +11,11 @@
                         <span>Start</span>
                   </button>
             }@else {
-                  <button [routerLink]="['start/'+selectId]"    class="text-white bg-primary hover:bg-emerald-500 text-md font-semibold transition-colors duration-400 cursor-pointer relative h-[42px] flex items-center px-6 rounded-md  mb-2">
+                  <button [routerLink]="['start/'+selectId]"   class="text-white bg-primary hover:bg-emerald-500 text-md font-semibold transition-colors duration-400 cursor-pointer relative h-[42px] flex items-center px-6 rounded-md  mb-2">
                         <span>Start</span>
                   </button>
             }
 
       </div>
 </div>
+

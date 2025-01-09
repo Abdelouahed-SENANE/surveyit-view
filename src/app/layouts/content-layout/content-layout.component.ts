@@ -9,14 +9,19 @@ import { RouterModule } from '@angular/router';
   styleUrl: './content-layout.component.css'
 })
 export class ContentLayoutComponent {
-  navlinks = [
+  navLinks = [
     {
       label : 'Home',
       path : ''
     },
     {
-      label : 'Partcipate',
+      label : 'Participate',
       path : 'participate'
+    },
+    {
+      label : 'Results',
+      path : 'results'
     }
+
   ]
 }
