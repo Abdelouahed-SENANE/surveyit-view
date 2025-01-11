@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Question } from '../../../../core/models';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Chapter } from '../../../../core/models';
 import { StatisBarComponent } from "../statis-bar/statis-bar.component";
 
 @Component({
@@ -8,7 +8,7 @@ import { StatisBarComponent } from "../statis-bar/statis-bar.component";
   templateUrl: './statis-card.component.html',
   styleUrl: './statis-card.component.css'
 })
-export class StatisCardComponent {
-  @Input() question! : Question
+export class StatisCardComponent  {
+  @Input() chapter! : Chapter
 
 }

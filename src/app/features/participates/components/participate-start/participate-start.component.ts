@@ -34,7 +34,18 @@ export class ParticipateStartComponent implements OnInit {
     questionId: '',
     answerId: ''
   }
-
+  resetMulti() { 
+    this.multi = {
+      questionId: '',
+      answers: []
+    }
+  }
+  resetSingle() {
+    this.single = {
+      questionId: '',
+      answerId: ''
+    }
+  }
    ngOnInit(): void {
 
       this.loadEdition();
@@ -94,13 +105,13 @@ export class ParticipateStartComponent implements OnInit {
     } else {
       this.multi.answers = this.multi.answers.filter(a => a.answerId != answerId)
     }
-    console.log(this.multi)
+    console.log(this.multi);
+    
   }
 
   onChangeAnswer(answerId: string): void {
     this.single.questionId = this.data[this.chapterIndex].questions[this.questionIndex].id
     this.single.answerId = answerId
-    console.log(this.single.questionId)
   }
 
   submitForm(newParticipation: any) {
@@ -127,6 +138,7 @@ export class ParticipateStartComponent implements OnInit {
   }
 
   next() {
+
 
     const currentQuestion: Question = this.data[this.chapterIndex].questions[this.questionIndex]
 
@@ -163,6 +175,8 @@ export class ParticipateStartComponent implements OnInit {
       return;
     }
     this.saveProgress()
+    this.resetMulti()
+    this.resetSingle()
   }
 
 

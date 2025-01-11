@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Chapter, Edition, Question } from '../../../../core/models';
-import { EditionResponse, QuestionResponse } from '../../../../common/response/api-response.module';
+import { EditionResponse } from '../../../../common/response/api-response.module';
 import { EditionService } from '../../services/editions.service';
 
 @Component({

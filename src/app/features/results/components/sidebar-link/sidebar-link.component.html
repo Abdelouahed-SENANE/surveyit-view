@@ -1,0 +1,25 @@
+
+@if (chapter.subchapters && chapter.subchapters.length > 0) {
+    @for (sub of chapter.subchapters; track sub.id) {
+        @if (sub.questions && sub.questions.length > 0) {
+            <li class=" pl-6 ">
+                <a
+                  class="text-sm cursor-pointer hover:underline py-1 duration-300 transition-colors ease-linear my-1"
+                  id="#subchapter"
+                  > {{sub.title}} </a
+                >
+              </li>
+        }@else {
+            <app-sidebar-link [chapter]="sub"></app-sidebar-link>
+        }
+    }
+}@else {
+    <li class=" pl-6 ">
+        <a
+          class="text-sm cursor-pointer hover:underline py-1 hover:text-emerald-500 duration-300 transition-colors ease-linear my-1"
+          id="{{chapter.id}}"
+          > {{chapter.title}} </a
+        >
+      </li>
+}
+

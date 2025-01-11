@@ -1,23 +1,36 @@
-<div class="relative container mx-auto my-10 h-[10000px]">
-  <div class="result_wrapper  text-lg relative flex items-start gap-4">
-    <main class="flex-1">
-      <article class="prose text-[15px] px-3">
-        <div class="pr-24">
-          <div class="pb-24 tracking-wider">
-            <div class="text-4xl my-6 underline font-bold">Overview</div>
-            <p class="text-gray-600">
-              SurveyIT is a comprehensive online platform designed to meet all
-              your survey needs. Whether you're gathering feedback from
-              customers, conducting market research, measuring employee
-              satisfaction, or collecting data for academic studies, SurveyIT
-              provides an intuitive and flexible solution to create, distribute,
-              and analyze surveys effortlessly.
-            </p>
-          </div>
-          <app-statis-card></app-statis-card>
-        </div>
-      </article>
-    </main>
-      <app-result-sidebar></app-result-sidebar>
-  </div>
+@if (isLoading) {
+  <div class="relative container flex items-center justify-center min-h-screen mx-auto my-10 ">
+    <app-loader/>
 </div>
+}
+
+
+@if (!isLoading) {
+  <div class="relative container mx-auto my-10 ">
+    <div class="result_wrapper  text-lg relative flex items-start gap-4">
+      <main class="flex-1">
+        <article class="prose text-[15px] px-3">
+          <div class="pr-24">
+            <div class="pb-24 tracking-wider">
+              <div class="text-4xl my-6 underline font-bold">Overview</div>
+              <p class="text-gray-600">
+                SurveyIT is a comprehensive online platform designed to meet all
+                your survey needs. Whether you're gathering feedback from
+                customers, conducting market research, measuring employee
+                satisfaction, or collecting data for academic studies, SurveyIT
+                provides an intuitive and flexible solution to create, distribute,
+                and analyze surveys effortlessly.
+              </p>
+            </div>
+            @for (chapter of chaptersList; track chapter.id) {
+  
+              <app-statis-card [chapter]="chapter"></app-statis-card>
+            }
+              
+          </div>
+        </article>
+      </main>
+        <app-result-sidebar [chapters]="edition.chapters"></app-result-sidebar>
+    </div>
+  </div>
+}

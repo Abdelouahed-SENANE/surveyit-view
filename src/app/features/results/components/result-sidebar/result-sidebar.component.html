@@ -2,18 +2,19 @@
   <nav
     class="md:block lg:block pb-12 w-[300px] max-h-screen overflow-y-auto h-[60000px] overflow-x-visible md:sticky md:top-0"
   >
-    <ul>
-      <li class="pl-3">
-        <a href="#overview">Overview</a>
-      </li>
-      <li class="bg-green-50 pl-6 border-l border-green-500">
-        <a
-          class="text-sm  text-emerald-600 font-semibold my-1"
-          id="#{subchapter}"
-          > A word about methodology </a
-        >
-      </li>
-    </ul>
+  <ul>
+    <li class="pl-3">
+      <a id="#overview" class="cursor-pointer hover:underline transition-colors py-1 duration-300 ease-linear hover:text-emerald-500">Overview</a>
+    </li>
+  </ul>
+    @for (chapter of chapters; track chapter.id) {
+        <ul>
+            <li class="pl-3">
+              <a [id]="chapter.id" class="cursor-pointer hover:underline transition-colors py-1 duration-300 ease-linear hover:text-emerald-500">{{chapter.title}}</a>
+            </li>
+            <app-sidebar-link [chapter]="chapter"></app-sidebar-link>
+          </ul> 
+    }
     
   </nav>
 </div>

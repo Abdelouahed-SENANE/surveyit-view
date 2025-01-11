@@ -5,5 +5,5 @@ import {ResultListComponent} from './components/result-list/result-list.componen
 
 export const routes : Routes = [
   {path : '', component : ResultListComponent},
-  {path : ':name/:year' , component : ResultItemComponent}
+  {path : ':name/edition/:id' , component : ResultItemComponent}
 ]

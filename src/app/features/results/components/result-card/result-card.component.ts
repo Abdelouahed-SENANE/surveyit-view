@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Edition} from '../../../../core/models';
 import {RouterLink} from '@angular/router';
 
