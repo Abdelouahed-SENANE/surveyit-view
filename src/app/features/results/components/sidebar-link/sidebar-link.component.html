@@ -5,7 +5,7 @@
             <li class=" pl-6 ">
                 <a
                   class="text-sm cursor-pointer hover:underline py-1 duration-300 transition-colors ease-linear my-1"
-                  id="#subchapter"
+                  (click)="scrollToSection(sub.id)"
                   > {{sub.title}} </a
                 >
               </li>
@@ -13,13 +13,5 @@
             <app-sidebar-link [chapter]="sub"></app-sidebar-link>
         }
     }
-}@else {
-    <li class=" pl-6 ">
-        <a
-          class="text-sm cursor-pointer hover:underline py-1 hover:text-emerald-500 duration-300 transition-colors ease-linear my-1"
-          id="{{chapter.id}}"
-          > {{chapter.title}} </a
-        >
-      </li>
 }
 

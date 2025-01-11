@@ -9,4 +9,12 @@ import { Chapter } from '../../../../core/models';
 })
 export class SidebarLinkComponent {
   @Input() chapter!: Chapter
+
+
+  scrollToSection(id : string) {
+   const  el = document.getElementById(id)
+    if(el) {
+      el.scrollIntoView({behavior : 'smooth' , block : 'start'})
+    }
+  }
 }
