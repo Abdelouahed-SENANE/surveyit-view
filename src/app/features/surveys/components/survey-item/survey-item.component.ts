@@ -24,8 +24,7 @@ export class SurveyItemComponent {
     if(confirm){
       this.service.deleteSurvey(id).subscribe({
         next : (res) => {
-          
-          window.location.href = "/admin/surveys/all"
+          window.location.href = "/owner/surveys/all"
         },
         error : (err) => {
           console.error(err)
@@ -35,11 +34,9 @@ export class SurveyItemComponent {
   }
 
   editSurvey(updateSurvey : SurveyRequestDTO) : void {
-    updateSurvey.ownerId = '1'
     this.service.editSurvey(updateSurvey).subscribe({
       next : (res) => {
-        console.log(res.data.survey);
-        window.location.href = '/admin/surveys/all'
+        window.location.href = '/owner/surveys/all'
       },
       error : (err) => {
         console.error(err)

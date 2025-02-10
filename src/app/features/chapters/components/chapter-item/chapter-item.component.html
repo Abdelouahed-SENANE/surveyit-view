@@ -32,6 +32,6 @@
               <app-chapter-tree [chapter]="chapter" (sendSelectedId)="recieveSubchapterIdFromCheckbox($event)"  (sendSubchapterId)="recieveSubchapterId($event)" (sendSubchapter)="recieveAndResendSubchapter($event)"></app-chapter-tree>
           }
 
-          <app-toast [isToast]="hasError" [errorMessage]="errorMessage"></app-toast>
+          <app-toast [isError]="hasError" [message]="errorMessage"></app-toast>
 </div>
 

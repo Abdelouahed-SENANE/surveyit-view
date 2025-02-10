@@ -2,11 +2,16 @@ import {NgModule} from '@angular/core';
 import {NoPreloading, PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {DashboardLayoutComponent} from './layouts/dashboard-layout/dashboard-layout.component';
 import {ContentLayoutComponent} from './layouts/content-layout/content-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { AuthGuard } from './core/services/auth/auth.guard';
+import { UnauthorizedComponent } from './features/errors/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
   {
     path: "owner",
     component: DashboardLayoutComponent,
+    data : {requiredRole : 'ROLE_OWNER'},
+    canActivate : [AuthGuard],
     children: [
       {
         path: "surveys",
@@ -38,6 +43,20 @@ export const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./features/auth/auth.routes').then(r => r.routes)
+      },
+    ]
+  },
+  {
+    path : 'unauthorized',
+    component : UnauthorizedComponent
+  }
 
 ];
 

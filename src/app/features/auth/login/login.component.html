@@ -1,0 +1,91 @@
+
+
+<div class="flex items-center w-full justify-center my-40 relative">
+  <app-toast [isActive]="isToast" [isError]="error.hasError" [message]="error.message"></app-toast>
+  <form
+    [formGroup]="loginForm"
+    class="flex items-center flex-col justify-center w-[30%] p-8 shadow-[0px_0px_6px_6px_rgba(0,_0,_0,_0.1)] shadow-gray-100 rounded-xl"
+  >
+    <div class="my-5">
+      <h2 class="text-3xl text-gray-700">Login to your account.</h2>
+    </div>
+    <div class="form_control flex flex-col my-2 w-full">
+      <label for="email" class="text-gray-600">Email:</label>
+      <input
+        type="text"
+        name="email"
+        formControlName="email"
+        id="email"
+        placeholder="Enter email"
+        [ngClass]="{'border-rose-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched, 'border-gray-300': !loginForm.get('email')?.invalid || !loginForm.get('email')?.touched}"
+        class="bg-gray-100 border focus:ring-2 focus:ring-slate-300 transition-all duration-300 rounded-lg my-2 w-full px-4 py-3 outline-none"
+      />
+      <div
+        class="text-red-500 text-sm"
+        *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        "
+      >
+        <div *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="loginForm.get('email')?.errors?.['email']">
+          Invalid email format.
+        </div>
+      </div>
+    </div>
+    <div class="form_control flex flex-col my-2 w-full">
+      <label for="description" class="text-gray-600">Password:</label>
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        id="password"
+        placeholder="Enter password"
+        required
+        [ngClass]="{'border-rose-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched, 'border-gray-300': !loginForm.get('password')?.invalid || !loginForm.get('password')?.touched}"
+        class="bg-gray-100 border focus:ring-2 focus:ring-slate-300 transition-all duration-300 rounded-lg my-2 w-full px-4 py-3 outline-none"
+      />
+      <div
+        class="text-red-500 text-sm"
+        *ngIf="
+          loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+        "
+      >
+        <div *ngIf="loginForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+          min charchters 8.
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end w-full">
+      <button
+        (click)="onSubmit()"
+        class="flex gap-2 bg-primary disabled:bg-gray-500 px-4 py-1.5 text-white items-end text-primary shadow-sm rounded-lg"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          fill="currentColor"
+          class="bi bi-box-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
+          />
+        </svg>
+        <span>Login</span>
+      </button>
+    </div>
+
+  </form>
+
+</div>

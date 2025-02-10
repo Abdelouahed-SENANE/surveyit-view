@@ -80,3 +80,21 @@ export interface SurveyListResponse {
       editions : Edition[] 
     }
   }
+  export interface LoginResponseDTO {
+    status: number;
+    message: string;
+    data: {
+      token : string
+      roles : string[]
+      exp : string
+    }
+  }
+  export interface UserResponseDTO {
+    status: number;
+    message: string;
+    data: {
+      id: string,
+      name: string,
+      email: string
+    }
+  }
